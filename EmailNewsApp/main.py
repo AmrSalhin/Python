@@ -12,8 +12,8 @@ request = requests.get(url)
 content = request.json()
 
 body = ""
-for article in content["articles"]:
-    body += str(article["title"]) + "\n"
+for article in content["articles"][:20]:
+    body += "subject: Today's News" + "\n" + str(article["title"]) + "\n" + article["url"] + "\n"
     body += str(article["description"]) + 2*"\n"
 
 body = body.encode("utf-8")
