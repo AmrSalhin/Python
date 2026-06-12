@@ -1,11 +1,11 @@
 import requests
 import send_email
 
-
+topic = "tesla"
 apiKey = "9d86746948ca4c5389d4d59f0e19c7ea"
-url = ("https://newsapi.org/v2/everything?q=tesla&"
-       "from=2026-05-10&sortBy=publishedAt&"
-       "apiKey=9d86746948ca4c5389d4d59f0e19c7ea")
+url = ("https://newsapi.org/v2/everything?"
+       f"q={topic}&from=2026-05-12&sortBy=publishedAt&"
+       "apiKey=9d86746948ca4c5389d4d59f0e19c7ea&language=en")
 
 request = requests.get(url)
 
