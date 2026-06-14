@@ -1,4 +1,6 @@
 import  streamlit as st
+from streamlit import checkbox
+
 import functions
 
 
@@ -16,8 +18,13 @@ def add_todo():
         functions.write_todos(todos)
 
 
-for todo in todos:
-    st.checkbox(todo)
+for index, todo in enumerate(todos):
+    checkbox = st.checkbox(todo, key=todo)
+    if checkbox:
+        todos.pop(index)
+        functions.write_todos(todos)
+        del st.session_state[todo]
+        st.rerun()
 
 st.text_input(label="", on_change=add_todo, key="new_todo",
               placeholder="Add new todo")
